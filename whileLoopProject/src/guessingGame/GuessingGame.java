@@ -17,7 +17,16 @@ public class GuessingGame {
 		int guess = sc.nextInt();
 		
 		while(guess!=target) {
-			System.out.println("Wrong. Try again!");
+			if ((guess < 1) || (guess > 10)) {
+				System.out.println("Out of bounds.");
+				guess = sc.nextInt();
+				break;
+			} else if ((guess-1) == target || (guess+1) == target) {
+				System.out.println("Getting close! You're out by one.");
+				guess = sc.nextInt();
+				break;
+			} 
+			System.out.println("Try again!");
 			guess = sc.nextInt();
 		}
 		

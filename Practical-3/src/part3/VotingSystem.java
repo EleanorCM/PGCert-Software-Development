@@ -19,8 +19,7 @@ entry(see below)   */
 		String userInput = " ";
 		while (userInput.isBlank()){
 			System.out.println("Enter your vote: ");
-			userInput = sc.nextLine();
-			userInput = userInput.toLowerCase();
+			userInput = sc.nextLine().toLowerCase();
 			if (!(userInput.equals("con")) && !(userInput.equals("lab"))) {
 				System.out.println("Not recognised");
 				userInput = " ";

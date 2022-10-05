@@ -24,8 +24,7 @@ entry(see below)   */
 				System.out.println("Not recognised");
 				userInput = " ";
 			} else if (userInput.equals("con")){System.out.println("You voted conservative.\nIt's like if turkeys voted for Christmas.");
-			} else if (userInput.equals("lab")) {System.out.println("Labour it is.\nNot much better than the other guys to be honest.");
-			} else userInput = " ";
+			} else {System.out.println("Labour it is.\nNot much better than the other guys to be honest.");}
 		}
 	}
 }

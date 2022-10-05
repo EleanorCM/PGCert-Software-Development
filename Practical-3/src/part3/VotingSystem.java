@@ -20,11 +20,12 @@ entry(see below)   */
 		while (userInput.isBlank()){
 			System.out.println("Enter your vote: ");
 			userInput = sc.nextLine();
-			if (!(userInput.toLowerCase().equals("con")) && !(userInput.toLowerCase().equals("lab"))) {
+			userInput = userInput.toLowerCase();
+			if (!(userInput.equals("con")) && !(userInput.equals("lab"))) {
 				System.out.println("Not recognised");
 				userInput = " ";
-			} else if (userInput.toLowerCase().equals("con")){System.out.println("You voted conservative.\nIt's like if turkeys voted for Christmas.");
-			} else if (userInput.toLowerCase().equals("lab")) {System.out.println("Labour it is.\nNot much better than the other guys to be honest.");
+			} else if (userInput.equals("con")){System.out.println("You voted conservative.\nIt's like if turkeys voted for Christmas.");
+			} else if (userInput.equals("lab")) {System.out.println("Labour it is.\nNot much better than the other guys to be honest.");
 			} else userInput = " ";
 		}
 	}

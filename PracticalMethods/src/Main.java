@@ -1,8 +1,12 @@
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
+
 public class Main {
+
+    // PART 1 - VOID METHODS
     public static void main(String[] args) {
 //        oddOrEvenChecker(234);
 //        caseConverter("I LIKE CHICKENS");
@@ -12,7 +16,11 @@ public class Main {
 //        printNumberInWord(5);
 //        incrementalSum(4);
 //        amOrPm();
-
+        System.out.println("2.1: Area of rectangle is " + (areaOfRectangle(4.54, 5)) + "cm");
+        System.out.println("2.2: Month name is "+ monthNumToString(5));
+        System.out.println("2.3: Average of three numbers is "+ avgOfThree(3,8,44));
+        System.out.println("2.4: Capital city is " + g8CapitalFinder("France"));
+        System.out.println("2.5: " + coinToss("heads"));
     } // end main
 
 
@@ -26,7 +34,6 @@ public class Main {
             return "Even";
         }
     } // end oddOrEvenChecker
-
 
     // 1.2
     public static String caseConverter(String toBeConverted) {
@@ -46,7 +53,6 @@ public class Main {
             return "Npt quite";
         }
     }
-
 
     // 1.4
     public static void randNumGenerator() {
@@ -73,7 +79,6 @@ public class Main {
         {
             System.out.println(i + " " + ("*".repeat(i)));
         }
-
     }
 
     // 1.6
@@ -116,7 +121,6 @@ public class Main {
         }
     }
 
-
     // 1.7
     public static void incrementalSum(int upperBound) {
         int sum = 0;
@@ -129,7 +133,6 @@ public class Main {
         System.out.println("The average is " + (sum / count));
     }
 
-
     // 1.8
     public static void amOrPm() {
         Calendar cal = Calendar.getInstance();
@@ -140,6 +143,58 @@ public class Main {
             System.out.println("AM");
         }
     }
+
+    // PART 2 - FRUITFUL/NON-VOID METHODS
+
+    // 2.1
+    public static double areaOfRectangle(double heightOfRectangle, double widthOfRectangle) {
+        return heightOfRectangle * widthOfRectangle;
+    }
+
+    // 2.2
+    public static String monthNumToString(int monthNumber) {
+        String[] monthNames = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+        return monthNames[monthNumber-1];
+    }
+
+    // 2.3
+    public static double avgOfThree(int num1, int num2, int num3) {
+        return (num1+num2+num3)/3;
+    };
+
+    // 2.4
+    public static String g8CapitalFinder(String nameOfCountry) {
+        HashMap <String,String> g8Countries = new HashMap<String, String>();
+        g8Countries.put("Canada","Ottawa");
+        g8Countries.put("France","Paris");
+        g8Countries.put("Italy","Rome");
+        g8Countries.put("Japan","Tokyo");
+        g8Countries.put("Russia","Moscow");
+        g8Countries.put("United Kingdom","London");
+        g8Countries.put("United States of America","Washington");
+        return g8Countries.get(nameOfCountry);
+    };
+
+    // 2.5
+    public static String coinToss(String call) {
+        Boolean resultBool;
+        String result;
+        String winOrLose;
+        Random rand = new Random();
+        resultBool = rand.nextBoolean();
+        if (resultBool) {
+            result = "heads";
+        } else
+            {result = "tails";
+        }
+        if (result == call) {
+            winOrLose = "win";
+        } else {
+            winOrLose = "lose";
+        }
+        return "You said \"" + call + "\". It was " + result + ". You " + winOrLose +"!";
+    }
+
 
 
 } // end class

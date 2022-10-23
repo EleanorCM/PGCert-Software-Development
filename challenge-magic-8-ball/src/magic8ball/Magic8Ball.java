@@ -40,13 +40,19 @@ public class Magic8Ball {
 		Scanner sc = new Scanner(System.in);
 
 		String question = "";
+		
+		System.out.println("The Illustrious Magic 8 Ball\n"
+				+ "\t .-\"\"\"-.\r\n"
+				+ "\t/   _   \\\r\n"
+				+ "\t|  (8)  |\r\n"
+				+ "\t\\   ^   /\r\n"
+				+ "\t '-...-'");
 
 		while (question.isBlank()) {
 			System.out.println("Ask your question, traveller: ");
 			question = sc.nextLine();
 			System.out.println("You asked \"" + question + "\". The Magic 8 Ball says: ");
 			int number = (int) (Math.random() * 8);
-			// System.out.println(number);
 			System.out.println(responses[number]);
 			System.out.println("Will you ask another question? (y/n)");
 			String again = "";
@@ -55,10 +61,10 @@ public class Magic8Ball {
 				if (again.toLowerCase().equals("y")) {
 					question = "";
 				} else if (again.toLowerCase().equals("n")) {
-					System.out.println("Farewell");
+					System.out.println("The Ball bids you farewell");
 				} else { System.out.println("I didn't understand that. Enter \"y\" or \"n\": ");
 				again = "";
-					;
+					
 				}
 			}
 

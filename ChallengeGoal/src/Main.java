@@ -4,25 +4,30 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
+
+        int[] saves = new int[5];
+
         // start of 5 tries
         for (int i = 0; i < 5; i++) {
-            System.out.println("Select shot: \n" + placeToShoot);
+            System.out.println(placeToShoot + "Select shot: ");
             int tempChoice = sc.nextInt();
             while (tempChoice < 1 || tempChoice > 9) {
                 System.out.println("Must be between 1 and 9 inclusive. Choose again");
                 tempChoice = sc.nextInt();
             } // end while
+            System.out.println("Placing the ball... Walking back... Run up... SHOOT!");
             int userChoice = tempChoice;
             int computerChoice = rand.nextInt(9);
             if (userChoice == computerChoice) {
                 System.out.println("SAVE!");
+                saves[i] = userChoice;
             } else {
                 System.out.println("GOAL! Keeper went to " + computerChoice);
-                goalsScored += 1;
+                goals += 1;
             }
         } // end of 5 tries
-        System.out.println("Goals scored: " + goalsScored + "/5");
-        System.out.println(performanceMessage(goalsScored));
+        System.out.println("Goals scored: " + goals + "/5");
+        System.out.println(performanceMessage(goals));
         System.out.println("Thanks for playing");
     } // end main
 
@@ -30,12 +35,9 @@ public class Main {
             "        |  1       2        3  |\n" +
             "        |  4       5        6  |\n" +
             "        |  7       8        9  |\n" +
-            "______________________________________________\n" +
-            "\n" +
-            "\n" +
-            "                   X";
+            "______________________________________________\n";
 
-    static int goalsScored = 0;
+    static int goals = 0;
     static Scanner sc = new Scanner(System.in);
     static Random rand = new Random();
 

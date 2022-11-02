@@ -57,7 +57,58 @@ public class Main {
             totalHeights += height;
         }
         System.out.println("Average height: " + (totalHeights/studentHeights.length));
-        System.out.println("Tallest; " + studentHeights.);
+        System.out.println("Tallest: " + tallestOrSmallest(studentHeights, "tallest") );
+        System.out.println("Smallest: " + tallestOrSmallest(studentHeights, "smallest"));
+        System.out.println("Tallest: " + tallOrSmallVar(studentHeights, "tallest") );
+        System.out.println("Smallest: " + tallOrSmallVar(studentHeights, "smallest"));
 
     } // end main
+
+    // BUBBLE SORT APPROACH
+    public static double tallestOrSmallest(double[] doubleArr, String tallOrSmall) {
+        /**
+         * Enter "tallest" or "smallest" to receive first or last element of sorted String
+         */
+        for (int i=0; i<doubleArr.length; i++) {
+            for (int j=0; i<doubleArr.length; i++) {
+                if (doubleArr[i] > doubleArr[j]) {
+                    double temp = doubleArr[i];
+                    doubleArr[i] = doubleArr[j];
+                    doubleArr[j] = temp;
+                }
+            }
+        }
+        if (tallOrSmall == "smallest") {
+            return doubleArr[0];
+        } else if (tallOrSmall == "tallest") {
+            return doubleArr[doubleArr.length-1];
+        } else {
+            return 0;
+        }
+    }
+
+    // STORING IN A VARIABLE APPROACH
+    public static double tallOrSmallVar(double[] doubleArr, String tallOrSmall) {
+
+        double tallestHeight = doubleArr[0];
+        double smallestHeight = doubleArr[0];
+
+        for (int i=0;i<doubleArr.length;i++) {
+            if (doubleArr[i] > tallestHeight) {
+                tallestHeight = doubleArr[i];
+            }
+            if (doubleArr[i] < smallestHeight) {
+                smallestHeight = doubleArr[i];
+            }
+        }
+        if (tallOrSmall.toLowerCase() == "smallest") {
+            return smallestHeight;
+        } else if (tallOrSmall.toLowerCase() == "tallest") {
+            return tallestHeight;
+        } else {
+            return 0;
+        }
+    }
+
+
 } // end class

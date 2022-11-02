@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a0f6a1bb-01b4-4340-8c4a-4c00d11ce5b1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/PracticalMethods/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PracticalMethods/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PracticalMethods/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PracticalMethods/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Practical-2/.project" beforeDir="false" afterPath="$PROJECT_DIR$/Practical-2/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Practical-2/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/Practical-2/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Practical-3/.project" beforeDir="false" afterPath="$PROJECT_DIR$/Practical-3/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Practical-3/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/Practical-3/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/challenge-magic-8-ball/.project" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-magic-8-ball/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/challenge-magic-8-ball/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-magic-8-ball/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/challenge-magic-8-ball/src/magic8ball/Magic8Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/challenge-magic-8-ball/src/magic8ball/Magic8Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lottery-system/.project" beforeDir="false" afterPath="$PROJECT_DIR$/lottery-system/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lottery-system/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/lottery-system/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lottery-system/src/lotterySystem/LottoChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/lottery-system/src/lotterySystem/LottoChecker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/practical-loops/.project" beforeDir="false" afterPath="$PROJECT_DIR$/practical-loops/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/practical-loops/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/practical-loops/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/practical-selection-statements/.project" beforeDir="false" afterPath="$PROJECT_DIR$/practical-selection-statements/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/practical-selection-statements/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/practical-selection-statements/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whileLoopProject/.project" beforeDir="false" afterPath="$PROJECT_DIR$/whileLoopProject/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/whileLoopProject/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/whileLoopProject/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2GUuzFvAUrr0gvQ7ya2O9oc8Keo" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Lenovo V15/OneDrive/Documents/PGCert Software Development"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a0f6a1bb-01b4-4340-8c4a-4c00d11ce5b1" name="Changes" comment="" />
+      <created>1666455744090</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666455744090</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

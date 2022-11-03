@@ -1,10 +1,6 @@
 package com.qub.readingweek;
 
 public class BookCipher {
-    /**
-     * Book cipher is a technique of hiding a message in the text of a book. Without altering the following 2D array of strings write a program that will extract the last character in each row to reveal (print it to screen) a hidden message... the hint on the message is already looking at you !  Print the message in UPPERCASE.
-     */
-
     public static void main(String[] args) {
         // extract last character of each row to a string
 

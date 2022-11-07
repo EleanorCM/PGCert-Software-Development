@@ -50,3 +50,6 @@ They like to confuse you with this one! Make sure you take time to double check 
 - **javadoc**: documentation generator
 - **jshell**: shell tool
 - **jar**: archive tool
+
+## Array Lists
+Good for dynamically collecting data

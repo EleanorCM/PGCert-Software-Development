@@ -51,5 +51,5 @@ They like to confuse you with this one! Make sure you take time to double check 
 - **jshell**: shell tool
 - **jar**: archive tool
 
-## Array Lists
-Good for dynamically collecting data
+## Switch Statements
+Make sure they all have `break;` keywords at end of each case unless specifically intending otherwise

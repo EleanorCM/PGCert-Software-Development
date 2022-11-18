@@ -53,3 +53,6 @@ They like to confuse you with this one! Make sure you take time to double check 
 
 ## Switch Statements
 Make sure they all have `break;` keywords at end of each case unless specifically intending otherwise
+
+## Precision
+If you need to handle a number as a decimal (ie, to obtain **percentages**) remember to ==**either cast before you convert, or just store the initial values as double, not int**==. If you are just using an integer (and then *formatting* it as a floating point decimal), you will **lose precision**.

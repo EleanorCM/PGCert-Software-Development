@@ -23,7 +23,8 @@ public class Writing {
 			BufferedWriter bw = new BufferedWriter(fw); // This is the file write handler
 			
 			for (String place : places) {
-				bw.write(place + "\n");
+				bw.write(place); // if you pass in numbers, they will be converted to ASCII chars
+				bw.newLine(); // better to use this than \n (some OSes don't like \n)
 			}
 			
 			bw.close();

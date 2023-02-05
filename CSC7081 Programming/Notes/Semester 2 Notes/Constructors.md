@@ -26,6 +26,8 @@ Constructors can accept arguments which can change object attributes and behavio
 	}
 ```
 
+When you instanciate an object and **pass parameters into it**, you are actually passing them to the object's ***constructor***. This also happens when you call `super(param)` inside a subclass constructor.
+
 You can use **method overloading** to create more than one constructor. In addition to the above:
 ```
 	public Car(String myCarColour, int myMileage) {
@@ -36,3 +38,4 @@ You can use **method overloading** to create more than one constructor. In addit
 
 An `@Override` tag indicates that you are **overriding** the superclass version of a given method inside a subclass.
 
+#constructors #behaviour #fields #attributes #variables #methodoverloading

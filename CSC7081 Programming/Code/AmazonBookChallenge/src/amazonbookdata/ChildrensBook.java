@@ -1,7 +1,13 @@
 package amazonbookdata;
 
 public class ChildrensBook extends Book {
-    private static String illustrator;
+    public ChildrensBook(String title, String author, double price, int pages, String isbn10, double avgRating,
+			String language, Genre genre, String illustrator) {
+		super(title, author, price, pages, isbn10, avgRating, language, genre);
+		setIllustrator(illustrator);
+	}
+
+	private String illustrator;
 
     public String getIllustrator() {
         return illustrator;

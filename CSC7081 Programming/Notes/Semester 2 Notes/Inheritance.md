@@ -10,3 +10,5 @@ Inheritance is **is-a** behaviour. Every Surgeon *is a* doctor (but not every do
 
 >NB. You can make arrays of superclass objects containing instances of subclasses:
 >![[MyObjectArray.png]]
+
+#private #visibility #static #inheritance #extends #override #is-a #Object #annotations #Arrays

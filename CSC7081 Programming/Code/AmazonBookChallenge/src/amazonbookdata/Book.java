@@ -8,8 +8,39 @@ public class Book {
     private String isbn10;
     private double avgRating;
     private String language;
+    private Genre genre;
+    
+    
+   
 
-    public String getTitle() {
+    /**
+	 * @param title
+	 * @param author
+	 * @param price
+	 * @param pages
+	 * @param isbn10
+	 * @param avgRating
+	 * @param language
+	 * @param genre
+	 */
+	public Book(String title, String author, double price, int pages, String isbn10, double avgRating, String language,
+			Genre genre) {
+		super();
+		setTitle(title);
+		setAuthor(author);
+		setPrice(price);
+		setPages(pages);
+		setIsbn10(isbn10);
+		setAvgRating(avgRating);
+		setLanguage(language);
+		setGenre(genre);
+	}
+
+	public Book() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getTitle() {
         return title;
     }
 
@@ -67,4 +98,18 @@ public class Book {
 
     public static void main(String[] args) {
     }
+
+	/**
+	 * @return the genre
+	 */
+	public Genre getGenre() {
+		return genre;
+	}
+
+	/**
+	 * @param genre the genre to set
+	 */
+	public void setGenre(Genre genre) {
+		this.genre = genre;
+	}
 }

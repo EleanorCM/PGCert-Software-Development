@@ -1,11 +1,11 @@
 package amazonbookdata;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import javax.sound.midi.Soundbank;
 
 public class MakingBooks {
     public static Book harryPotter1 = new Book();
@@ -80,7 +80,7 @@ public class MakingBooks {
         harryPotter1.setAvgRating(4.5);
         harryPotter1.setGenre(Genre.CLASSIC);
 
-        System.out.println(outputBookInfo(harryPotter1));
+//        System.out.println(outputBookInfo(harryPotter1));
 //        Book newBook = createBookFromUserInput();
 //        ChildrensBook newChildrensBook = createChildrensBookFromUserInput();
 //        System.out.println(outputBookInfo(newBook));
@@ -95,22 +95,65 @@ public class MakingBooks {
         myBooks.add(macbeth);
         myBooks.add(handmaid);
         
-        for (Book b : myBooks) {
-        	if (b.getGenre() == Genre.CLASSIC) {
-        		System.out.printf("%s, %s, %s\n", b.getTitle(), b.getAuthor(), b.getGenre().toString());
-        	}
-        	
-        	
-        FileReader fr = new FileReader("hi.csv");
-        BufferedReader br = new BufferedReader(fr);
+//        for (Book b : myBooks) {
+//        	if (b.getGenre() == Genre.CLASSIC) {
+//        		System.out.printf("%s, %s, %s\n", b.getTitle(), b.getAuthor(), b.getGenre().toString());
+//        	}      
+//        }
         
-      
-        }
+        try {
+        	Genre valueFromString = Genre.valueOf("CLASSIC");
+            System.out.println("Value "+valueFromString);
+		} catch (IllegalArgumentException e) {
+			System.err.print("Illegal Argument: That's not one of your enums :(");
+		}
+        ArrayList<Book> booksFromCsv = booksFromFile("./resources/Books.csv");
+        System.out.println("Books processed from CSV: "+booksFromCsv.size());
         
+        System.out.println("Number of classic books found: " + searchInBooks(booksFromCsv, Genre.CLASSIC).size());
         
-        
+        printAllDetails(booksFromCsv);
+    }// end main
     
+    private static void printAllDetails(ArrayList<Book> booksFromCsv) {
+	for (Book b : booksFromCsv) {
+		System.out.println(outputBookInfo(b));
+	}
+	
+}
+
+	public static ArrayList<Book> booksFromFile(String filename) {
+		ArrayList<Book> books = new ArrayList<Book>();
+		try {
+			FileReader fr = new FileReader(filename);
+			BufferedReader br = new BufferedReader(fr);
+			br.readLine(); // read first line header and discard
+			String line = br.readLine(); // read first line
+			while (line != null) {
+				String[] parts = line.split(",");
+				String name = parts[0];
+				String author = parts[1];
+				Genre type = Genre.valueOf(parts[2]);
+				Double price = Double.parseDouble(parts[3]);
+				books.add(new Book(name, author, type, price));
+				line = br.readLine();
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found");
+		} catch (IOException e) {
+			System.out.println("That didn't work");
+		}
+    return books;
+    } 
+    
+    public static ArrayList<Book> searchInBooks(ArrayList<Book> bookList, Genre target) {
+    	ArrayList<Book> foundBooks = new ArrayList<Book>();
+    	for (Book b : bookList) {
+    		if (b.getGenre() == target) {
+    			foundBooks.add(b);
+    		}
+    	}
+    	return foundBooks;
     }
     
-    
-}
+}// end class

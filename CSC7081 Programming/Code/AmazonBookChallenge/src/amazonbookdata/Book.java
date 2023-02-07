@@ -40,6 +40,13 @@ public class Book {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Book(String name, String author2, Genre type, Double price2) {
+		setTitle(title);
+		setAuthor(author);
+		setGenre(type);
+		setPrice(price);
+	}
+
 	public String getTitle() {
         return title;
     }

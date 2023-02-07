@@ -1,3 +1,5 @@
 **Remember to surround your file handlers with try/catch blocks and catch specific exceptions!**
 
-Reading books from a CSV into an ArrayList using enums as search keys:
+We can use `Genre.valueOf("ENUM_FIELD")` to check if there is an enum matching a given string.
+
+![[ReadingFromCsvWithEnums.png]]

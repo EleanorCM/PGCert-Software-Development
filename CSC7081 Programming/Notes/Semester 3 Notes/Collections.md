@@ -62,7 +62,7 @@ public class Person implements Comparable<Person> {
 
 ```
 
-When comparing and sorting complex objects on different attributes we use the **Comparator** interface. This mandates a `.compare()` method implementation.
+When comparing and sorting complex objects on particular attributes we use the **Comparator** interface. This mandates a `.compare()` method implementation.
 ```java
 public class ComparePersonByFirstName implements Comparator<Person> {
 	@Override
@@ -72,8 +72,11 @@ public class ComparePersonByFirstName implements Comparator<Person> {
 }
 ```
 
-You create a comparator class (implementation of Comparator) only if you need one to compare a particular attribute.
+You create a **comparator class** (implementation of Comparator) only if you need one **to compare a particular attribute**.
 
 ```java
 Collections.sort(people, new ComparePersonByFirstName()); // accepts a linked list and a comparator object to sort the linked list by
 ```
+
+## Equals
+The .equals() method **doesn't just compare based on one attribute**. 

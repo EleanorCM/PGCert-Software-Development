@@ -6,8 +6,9 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
-public class SetsDemo {
+public class SetsDemo implements Comparable<T> {
 
 	public SetsDemo() {
 	}
@@ -27,6 +28,11 @@ public class SetsDemo {
 		
 	}
 	
-	
+
+	@Override
+	public int compareTo(T o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('csslinks') %>
+    <title>Insights</title>
+</head>
+<body>
+
+    <%- include('navbar') %>
+
+    <main class="mainwrapper">
+
+    <a href="/insights/filter?emotion=happiness_rating" class="secondary">
+        <button>Happiness</button>
+    </a>
+    <a href="/insights/filter?emotion=surprise_rating" class="secondary">
+        <button>Surprise</button>
+    </a>
+    <a href="/insights/filter?emotion=sadness_rating" class="secondary">
+        <button>Sadness</button>
+    </a>
+    <a href="/insights/filter?emotion=contempt_rating" class="secondary">
+        <button>Contempt</button>
+    </a>
+    <a href="/insights/filter?emotion=fear_rating" class="secondary">
+        <button>Fear</button>
+    </a>
+    <a href="/insights/filter?emotion=disgust_rating" class="secondary">
+        <button>Disgust</button>
+    </a>
+    <a href="/insights/filter?emotion=anger_rating" class="secondary">
+        <button>Anger</button>
+    </a>
+    <div>
+        <% for (let result in resultobject) { %>
+        <div class="flex-item">
+            <%= resultobject.id %>
+            <%= resultobject.user_id %>
+            <%= resultobject.datetime %>
+            <%= resultobject.comments %>
+            <%= resultobject.happiness_rating %>
+            <%= resultobject.surprise_rating %>
+            <%= resultobject.contempt_rating %>
+            <%= resultobject.sadness_rating %>
+            <%= resultobject.fear_rating %>
+            <%= resultobject.disgust_rating %>
+            <%= resultobject.anger_rating %>
+            <a href="/editsnapshot/<%= resultobject.id %>" title="Edit">
+                <span class="icon">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </span>
+            </a>
+            <a href="/deletesnapshot/<%= resultobject.id %>" title="Delete">
+                <span class="icon">
+                    <i class="fa-solid fa-trash"></i>
+                </span>
+            </a>
+        </div>
+        <% }; %>
+    </div>
+</main>
+</body>
+</html>

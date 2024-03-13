@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('csslinks') %>
+    <title>TrueMood</title>
+  </head>
+  <body id="landing-background">
+    <main id="landing-main">
+      <div id="landing-container">
+        <div id="landing-truemood-logo">TrueMood</div>
+        <div id="login-box"><%- include('login') %></div>
+        <div id="quotebox">
+        <p id="quote">"<%= data[0].q %>"</p>
+        <p><%= data[0].a %></p>
+    </div>
+      </div>
+    </main>
+  </body>
+</html>

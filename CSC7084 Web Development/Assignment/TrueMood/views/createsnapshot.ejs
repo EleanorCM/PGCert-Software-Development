@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Snapshot</title>
+    <%- include('csslinks') %>
+    <script src="https://kit.fontawesome.com/314463b07c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title is-1">Create snapshot</h1>
+            <form action="/createsnapshot" method="post">
+
+                <div class="field">
+                    <label class="label" for="comments">Comments</label>
+                    <div class="control">
+                        <input class="input" name="comments" type="textbox" placeholder="Contextual triggers" id="comments">
+                    </div>
+                    
+                </div>
+
+                <div>
+                    <div>
+                    <label for="happiness_rating">Happiness</label>
+                    <input type="range" name="happiness_rating" id="happiness_rating" min="1" max="10" value="1" oninput="this.nextElementSibling.value = this.value">
+                    <output>1</output>
+                </div>
+                <div>
+                    <label for="surprise_rating">Surprise</label>
+                    <input type="range" name="surprise_rating" id="surprise_rating" min="1" max="10" value ="1" oninput="this.nextElementSibling.value = this.value">
+                    <output>1</output>
+                </div>
+                <div>
+                    <label for="contempt_rating">Contempt</label>
+                    <input type="range" name="contempt_rating" id="contempt_rating" min="1" max="10" value ="1" oninput="this.nextElementSibling.value = this.value">
+                    <output>1</output>
+                </div>
+                <div>
+                    <label for="sadness_rating">Sadness</label>
+                    <input type="range" name="sadness_rating" id="sadness_rating" min="1" max="10" value ="1" oninput="this.nextElementSibling.value = this.value">
+                    <output>1</output>
+                </div>
+                <div>
+                    <label for="fear_rating">Fear</label>
+                    <input type="range" name="fear_rating" id="fear_rating" min="1" max="10" value ="1" oninput="this.nextElementSibling.value = this.value">
+                    <output>1</output>
+                </div>
+                <div>
+                    <label for="disgust_rating">Disgust</label>
+                    <input type="range" name="disgust_rating" id="disgust_rating" min="1" max="10" value ="1" oninput="this.nextElementSibling.value = this.value">
+                    <output>1</output>
+                </div>
+                <div>
+                    <label for="anger_rating">Anger</label>
+                    <input type="range" name="anger_rating" id="anger_rating" min="1" max="10" value ="1" oninput="this.nextElementSibling.value = this.value">
+                    <output>1</output>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <input class="button is-danger" type="submit" value="Submit">
+                    </div>
+                    
+                </div>
+            </form>
+
+            <div>
+                <h2 class="title is-2">My latest snapshots</h2>
+            </div>
+
+            <div>
+                <% data.forEach((resultobject) => { %>
+                <div class="flex-item">
+                    <%= resultobject.id %>
+                    <%= resultobject.user_id %>
+                    <%= resultobject.datetime %>
+                    <%= resultobject.comments %>
+                    <%= resultobject.happiness_rating %>
+                    <%= resultobject.surprise_rating %>
+                    <%= resultobject.contempt_rating %>
+                    <%= resultobject.sadness_rating %>
+                    <%= resultobject.fear_rating %>
+                    <%= resultobject.disgust_rating %>
+                    <%= resultobject.anger_rating %>
+                    <a href="/editsnapshot/<%= resultobject.id %>" title="Edit">
+                        <span class="icon">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </span>
+                    </a>
+                    <a href="/deletesnapshot/<%= resultobject.id %>" title="Delete">
+                        <span class="icon">
+                            <i class="fa-solid fa-trash"></i>
+                        </span>
+                    </a>
+                </div>
+            <% }); %>
+            </div>
+        </div>
+
+
+    </section>
+
+
+    
+</body>
+</html>

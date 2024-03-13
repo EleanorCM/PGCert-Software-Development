@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/mystyles.css">
+    <title>TrueMood</title>
+</head>
+<body>
+    <%- include('header');  %>
+    <h1>What's happening, <%= userFirstName %>?</h1>
+    <div>
+        <p>An app for logging your emotions, including:
+            <ul>
+                <% for (let emotion of emotionsList) { %>
+                <li><%= emotion %></li>
+                <% } %>
+            </ul>
+        </p>
+    </div>
+    <%- include('footer') %>
+</body>
+</html>

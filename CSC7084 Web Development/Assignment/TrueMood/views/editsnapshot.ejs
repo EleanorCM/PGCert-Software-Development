@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Snapshot</title>
+    <%- include('csscdnlinks') %>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Edit snapshot</h1>
+            <% for (let row of result) { %>
+                <% var id = row.id;         %>
+                <% var user_id = row.user_id;   %>
+                <% var datetime = row.datetime; %>
+                <% var happiness_rating = row.happiness_rating; %>
+                <% var surprise_rating = row.surprise_rating; %>
+                <% var contempt_rating = row.contempt_rating; %>
+                <% var sadness_rating = row.sadness_rating %>
+                <% var fear_rating= row.fear_rating %>
+                <% var disgust_rating = row.disgust_rating; %>
+                <% var anger_rating = row.anger_rating; %>
+                <% var comments = row.comments; %>
+            <% } %>
+            <div>
+                <%= datetime %>
+            </div>
+            <form action="/editsnapshot/<%= id %>" method="post">
+
+                <div class="field">
+                    <label class="label" for="comments">Comments</label>
+                    <div class="control">
+                        <input class="input" name="comments" type="textarea" id="comments" value="<%= comments %>">
+                    </div>
+                    
+                </div>
+
+                <div>
+                    <div>
+                    <label for="happiness_rating">Happiness</label>
+                    <input type="range" name="happiness_rating" id="happiness_rating" min="1" max="10" value="<%= happiness_rating %>" oninput="this.nextElementSibling.value = this.value">
+                    <output><%= happiness_rating %></output>
+                </div>
+                <div>
+                    <label for="surprise_rating">Surprise</label>
+                    <input type="range" name="surprise_rating" id="surprise_rating" min="1" max="10" value ="<%= surprise_rating %>" oninput="this.nextElementSibling.value = this.value">
+                    <output><%= surprise_rating %></output>
+                </div>
+                <div>
+                    <label for="contempt_rating">Contempt</label>
+                    <input type="range" name="contempt_rating" id="contempt_rating" min="1" max="10" value ="<%= contempt_rating %>" oninput="this.nextElementSibling.value = this.value">
+                    <output><%= contempt_rating %></output>
+                </div>
+                <div>
+                    <label for="sadness_rating">Sadness</label>
+                    <input type="range" name="sadness_rating" id="sadness_rating" min="1" max="10" value ="<%= sadness_rating %>" oninput="this.nextElementSibling.value = this.value">
+                    <output><%= sadness_rating %></output>
+                </div>
+                <div>
+                    <label for="fear_rating">Fear</label>
+                    <input type="range" name="fear_rating" id="fear_rating" min="1" max="10" value ="<%= fear_rating %>" oninput="this.nextElementSibling.value = this.value">
+                    <output><%= fear_rating %></output>
+                </div>
+                <div>
+                    <label for="disgust_rating">Disgust</label>
+                    <input type="range" name="disgust_rating" id="disgust_rating" min="1" max="10" value ="<%= disgust_rating %>" oninput="this.nextElementSibling.value = this.value">
+                    <output><%= disgust_rating %></output>
+                </div>
+                <div>
+                    <label for="anger_rating">Anger</label>
+                    <input type="range" name="anger_rating" id="anger_rating" min="1" max="10" value ="<%= anger_rating %>" oninput="this.nextElementSibling.value = this.value">
+                    <output><%= anger_rating %></output>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <input class="button is-danger" type="submit" value="Save">
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>

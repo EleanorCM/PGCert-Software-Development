@@ -2,14 +2,22 @@ const axios = require("axios");
 const path = require("path");
 const conn = require("../util/dbconn");
 const {validationResult} = require('express-validator');
+const session = require("express-session");
+const { time } = require("console");
 
-// TODO: Navbar
+// TODO Data accessible to only that user 
+// TODO SET of contextual triggers (separate triggers table)
+//TODO Summary visualisation over time (insights)
+
 // TODO Chart.js
 // TODO: Pagination?
 // TODO: Flexbox
 
 
 exports.getLanding = async (req, res) => {
+  if (req.session.isloggedin) {
+    res.redirect('/createsnapshot');
+  }
   const response = await axios.get(
     "https://zenquotes.io/api/random/[your_key]"
   );
@@ -27,7 +35,8 @@ exports.getLanding = async (req, res) => {
 };
 
 exports.getCreateSnapshot = async (req, res) => {
-  const response = await axios.get("http://localhost:3002/");
+  const u_id = req.session.userid;
+  const response = await axios.get(`http://localhost:3002/latestsnapshots?userid=${u_id}`);
   const rows = response.data.result;
 
   try {
@@ -46,6 +55,7 @@ exports.getCreateSnapshot = async (req, res) => {
 };
 
 exports.postCreateSnapshot = async (req, res) => {
+  const user_id = req.session.userid;
   const {
     datetime,
     comments,
@@ -59,6 +69,7 @@ exports.postCreateSnapshot = async (req, res) => {
   } = req.body;
 
   const vals = [
+    user_id,
     comments,
     happiness_rating,
     surprise_rating,
@@ -70,6 +81,7 @@ exports.postCreateSnapshot = async (req, res) => {
   ];
 
   const response = await axios.post("http://localhost:3002/", {
+    user_id,
     comments,
     happiness_rating,
     surprise_rating,
@@ -82,6 +94,8 @@ exports.postCreateSnapshot = async (req, res) => {
 
   try {
     if (response.status === 201) {
+      console.log("RESPONSE BODY:");
+      console.log(response);
       res.cookie("comments", comments);
       console.log(`Response status code: ${response.status}`);
       res.redirect("/createsnapshot");
@@ -192,47 +206,70 @@ exports.getDeleteSnapshot = async (req, res) => {
 };
 
 exports.getInsights = async (req, res) => {
-  const response = await axios.get(`http://localhost:3002/insights`);
+  const filter = req.query.emotion;
+  const userid = req.session.userid;
+  const response = await axios.get(`http://localhost:3002/insights?userid=${userid}`);
   const rows = response.data.result;
+
 
   try {
     if (response.status === 200) {
       console.log(`Response status code: ${response.status}`);
-      res.render("insights", { data: rows });
+      let ratings = [];
+      let timestamps = [];
+
+      rows.forEach(row => {
+        const rating = row[filter];
+        ratings.push(rating);
+        timestamps.push(row.datetime);
+      });
+      console.log("RATINGS");
+      console.log(ratings);
+      console.log("TIMESTAMPS");
+      console.log(timestamps);
+      res.render("insights", { rows: rows, userid: userid, ratings: ratings, timestamps: timestamps });
     } else {
       console.error(`Response status code: ${response.status}`);
     }
   } catch (error) {
     console.log(error);
   }
-  // let filter;
-  // if (req.cookie) {
-  //   filter = req.cookie.emotion;
-  // }
 
-  // let userinfo = {};
-  // console.log("user data from session: " + isloggedin, plan);
-
-  // userinfo = { loggedin: isloggedin, userplan: plan };
-  // const selectSQL = "SELECT * FROM snapshots ORDER BY id DESC";
-  // const endpoint = "http://localhost:3002/insights";
-
-  // try {
-  //   res
-  //     .status(200)
-  //     .render("insights", { data: data, filter: filter, user: userinfo });
-  // } catch (error) {}
 };
 
 exports.getFilterSnapshots = async (req, res) => {
   const filter = req.query.emotion;
-  res.cookie("filter", filter, { maxAge: 36000 });
-  //req.session.emotion = filter;
-  const selectSQL = `SELECT datetime, comments, ${filter} FROM snapshots ORDER BY id DESC`;
+  const userid = req.session.userid;
+  res.cookie("emotion", filter, { maxAge: 60000 });
+  const response = await axios.get(`http://localhost:3002/insights/filter?userid=${userid}&filter=${filter}`);
+  const rows = response.data.result;
+  console.log("FILTER INSIGHTS ROWS: ");
+  console.log(rows);
+  res.cookie("emotion", filter, { maxAge: 60000 });
+
   try {
-    const [rows, fielddata] = await conn.query(selectSQL);
+    if (response.status === 200) {
+      console.log(`Response status code: ${response.status}`);
+      
+      let ratings = [];
+      let timestamps = [];
+
+      rows.forEach(row => {
+        const rating = row[filter];
+        ratings.push(rating);
+        timestamps.push(row.datetime);
+      });
+      console.log("RATINGS");
+      console.log(ratings);
+      console.log("TIMESTAMPS");
+      console.log(timestamps);
+
+      res.render("insights", { rows: rows, userid:userid, filter:response.filter, ratings: ratings, timestamps:timestamps });
+      console.log(req.session);
+    } else {
+      console.error(`Response status code: ${response.status}`);
+    }
     console.log(rows);
-    res.status(200).render("insights", { data: rows });
   } catch (err) {
     console.log(err);
   }
@@ -254,17 +291,22 @@ if (!errors.isEmpty()) {
     userpass: userpass
   });
   const rows = response.data.result;
+  const userid = rows[0].id;
 
   try {
     if (response.status === 201) {
       console.log(`Response status code: ${response.status}`);
+      console.log("RESPONSE " + response);
+      console.log("ROWS" + rows);
       const numrows = rows.length;
       console.log("numrows: " + numrows);
 
       if (numrows > 0) {
+        // Adding properties to session
         const session = req.session;
         session.isloggedin = true;
         session.email = email;
+        session.userid = userid;
         let original_route = session.route;
         console.log(`postLogin: orig_route: ${original_route}`);
         console.log(session);

@@ -3,62 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js" integrity="sha512-ZwR1/gSZM3ai6vCdI+LVF1zSq/5HznD3ZSTk7kajkaj4D292NLuduDCO1c/NT8Id+jE58KYLKT7hXnbtryGmMg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <%- include('csslinks') %>
-    <title>Insights</title>
+    <title>Insights Dashboard</title>
 </head>
 <body>
 
     <%- include('navbar') %>
 
     <main class="mainwrapper">
+        <h1>Insights Dashboard</h1>
+        <div class= "container">
+            <canvas id="bkgcanvas" width="500", height="350">
 
-    <a href="/insights/filter?emotion=happiness_rating" class="secondary">
+            </canvas>
+        </div>
+
+        <script>
+            const xlabels = JSON.parse(`<%- JSON.stringify(timestamps) %>`);
+            const yvals = JSON.parse(`<%- JSON.stringify(ratings) %>`);
+            console.log(xlabels);
+            console.log(yvals);
+
+            const chartdata = {
+                labels: xlabels,
+                datasets: [{
+                    data: yvals
+                }]
+            };
+
+            const chartconfig = {
+                type: "line",
+                data: chartdata,
+                options: {
+                    responsive: false,
+                    animation: true,
+                    maintainAspectRatio: true,
+                    scales: {y: {min: 1, max: 10}},
+                    plugins: {
+                        length: {display: false},
+                        tooltips: {enabled: true},
+                        title: {
+                            display: true,
+                            text: 'Emotion ratings histogram',
+                            font: { size: 20 }
+                        }
+                    }
+                }
+            };
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const chart = new Chart('bkgcanvas', chartconfig);
+            });
+
+            
+        </script>
+
+    <a href="/insights/filter?userid=<%= userid %>&emotion=happiness_rating" class="secondary">
         <button>Happiness</button>
     </a>
-    <a href="/insights/filter?emotion=surprise_rating" class="secondary">
+    <a href="/insights/filter?userid=<%= userid %>&emotion=surprise_rating" class="secondary">
         <button>Surprise</button>
     </a>
-    <a href="/insights/filter?emotion=sadness_rating" class="secondary">
+    <a href="/insights/filter?userid=<%= userid %>&emotion=sadness_rating" class="secondary">
         <button>Sadness</button>
     </a>
-    <a href="/insights/filter?emotion=contempt_rating" class="secondary">
+    <a href="/insights/filter?userid=<%= userid %>&emotion=contempt_rating" class="secondary">
         <button>Contempt</button>
     </a>
-    <a href="/insights/filter?emotion=fear_rating" class="secondary">
+    <a href="/insights/filter?userid=<%= userid %>&emotion=fear_rating" class="secondary">
         <button>Fear</button>
     </a>
-    <a href="/insights/filter?emotion=disgust_rating" class="secondary">
+    <a href="/insights/filter?userid=<%= userid %>&emotion=disgust_rating" class="secondary">
         <button>Disgust</button>
     </a>
-    <a href="/insights/filter?emotion=anger_rating" class="secondary">
+    <a href="/insights/filter?userid=<%= userid %>&emotion=anger_rating" class="secondary">
         <button>Anger</button>
     </a>
     <div>
-        <% for (let result in resultobject) { %>
-        <div class="flex-item">
-            <%= resultobject.id %>
-            <%= resultobject.user_id %>
-            <%= resultobject.datetime %>
-            <%= resultobject.comments %>
-            <%= resultobject.happiness_rating %>
-            <%= resultobject.surprise_rating %>
-            <%= resultobject.contempt_rating %>
-            <%= resultobject.sadness_rating %>
-            <%= resultobject.fear_rating %>
-            <%= resultobject.disgust_rating %>
-            <%= resultobject.anger_rating %>
-            <a href="/editsnapshot/<%= resultobject.id %>" title="Edit">
+        <% rows.forEach(result => { %>
+            <div class="flex-item">
+                <%= result.id %>
+                <%= result.user_id %>
+                <%= result.datetime %>
+                <%= result.comments %>
+                <%= result.happiness_rating %>
+                <%= result.surprise_rating %>
+                <%= result.contempt_rating %>
+                <%= result.sadness_rating %>
+                <%= result.fear_rating %>
+                <%= result.disgust_rating %>
+                <%= result.anger_rating %>
+                <a href="/editsnapshot/<%= result.id %>" title="Edit">
                 <span class="icon">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </span>
             </a>
-            <a href="/deletesnapshot/<%= resultobject.id %>" title="Delete">
+            <a href="/deletesnapshot/<%= result.id %>" title="Delete">
                 <span class="icon">
                     <i class="fa-solid fa-trash"></i>
                 </span>
             </a>
         </div>
-        <% }; %>
+        <% }); %>
     </div>
 </main>
 </body>

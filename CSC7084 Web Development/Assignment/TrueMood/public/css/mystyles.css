@@ -190,7 +190,7 @@ body {
     padding-top: 100px;
 }
 
-#landing-truemood-logo {
+.landing-truemood-logo {
     padding-top: 2%;
     font-family: 'Satisfy', serif;
     font-size: 75pt;
@@ -207,17 +207,17 @@ body {
     font-size: 14pt;
 }
 
-#landing-background {
-    background-image: url('./images/PurpleBgCreativeCommons.jpg');
+.landing-background {
+    background-image: url('./../images/PurpleBgCreativeCommons.jpg');
     background-size:cover;
 }
 
-#landing-container {
+.landing-container {
     margin: 0 auto;
     max-width:50%
 }
 
-#landing-main {
+.landing-main {
     color: #e2d8e3;
 }
 
@@ -228,3 +228,13 @@ body {
 #landing-submit {
     margin: 0 auto;
 }
+
+.button-black {
+    background-color: black;
+    border-color: black;
+  }
+
+  #oops-container {
+    padding-left: 10%;
+    padding-top: 5%;
+  }

@@ -6,10 +6,11 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const path = require("path");
 
+
 const app = express();
 
 app.use(morgan("tiny"));
-app.use(express.static(path.join(__dirname, "public/css/")));
+app.use(express.static(path.join(__dirname, "public/")));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(session({

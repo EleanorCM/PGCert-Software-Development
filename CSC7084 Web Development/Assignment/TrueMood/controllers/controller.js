@@ -5,12 +5,8 @@ const {validationResult} = require('express-validator');
 const session = require("express-session");
 const { time } = require("console");
 
-// TODO Data accessible to only that user 
 // TODO SET of contextual triggers (separate triggers table)
-//TODO Summary visualisation over time (insights)
 
-// TODO Chart.js
-// TODO: Pagination?
 // TODO: Flexbox
 
 
@@ -221,7 +217,18 @@ exports.getInsights = async (req, res) => {
       rows.forEach(row => {
         const rating = row[filter];
         ratings.push(rating);
-        timestamps.push(row.datetime);
+
+        dateString = row.datetime;
+        const dateRegex = /^(\d{4}-\d{2}-\d{2})T/;
+        const matchResult = dateString.match(dateRegex);
+        if (matchResult) {
+          const extractedDate = matchResult[1];
+          console.log("Extracted date:", extractedDate);
+          timestamps.push(extractedDate);
+        } else {
+          console.log("No date found.");
+        }
+        
       });
       console.log("RATINGS");
       console.log(ratings);
@@ -257,7 +264,19 @@ exports.getFilterSnapshots = async (req, res) => {
       rows.forEach(row => {
         const rating = row[filter];
         ratings.push(rating);
-        timestamps.push(row.datetime);
+
+        dateString = row.datetime;
+        const dateRegex = /^(\d{4}-\d{2}-\d{2})T/;
+        const matchResult = dateString.match(dateRegex);
+        if (matchResult) {
+          const extractedDate = matchResult[1];
+          console.log("Extracted date:", extractedDate);
+          timestamps.push(extractedDate);
+        } else {
+          console.log("No date found.");
+        }
+
+        
       });
       console.log("RATINGS");
       console.log(ratings);

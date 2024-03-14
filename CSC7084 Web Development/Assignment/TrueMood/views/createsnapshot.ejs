@@ -12,9 +12,9 @@
     <%- include('navbar') %>
     <section class="section">
         <div class="container">
-            <h1 class="title is-1">Create snapshot</h1>
+            <h1>Create snapshot</h1>
             <form action="/createsnapshot" method="post">
-
+                <div class="grid-container">
                 <div class="field">
                     <label class="label" for="comments">Comments</label>
                     <div class="control">
@@ -23,8 +23,8 @@
                     
                 </div>
 
+            
                 <div>
-                    <div>
                     <label for="happiness_rating">Happiness</label>
                     <input type="range" name="happiness_rating" id="happiness_rating" min="1" max="10" value="1" oninput="this.nextElementSibling.value = this.value">
                     <output>1</output>
@@ -59,32 +59,28 @@
                     <input type="range" name="anger_rating" id="anger_rating" min="1" max="10" value ="1" oninput="this.nextElementSibling.value = this.value">
                     <output>1</output>
                 </div>
+            
+                
                 <div class="field">
                     <div class="control">
-                        <input class="button is-danger" type="submit" value="Submit">
+                        <input type="submit" value="Submit">
                     </div>
-                    
+                    </div>
                 </div>
             </form>
 
             <div>
-                <h2 class="title is-2">My latest snapshots</h2>
+                <h2>My latest snapshots</h2>
             </div>
 
             <div>
                 <% data.forEach((resultobject) => { %>
-                <div class="flex-item">
-                    <%= resultobject.id %>
-                    <%= resultobject.user_id %>
-                    <%= resultobject.datetime %>
+                <div class="snapshot-card">
+
+                    <%const [, extractedDate] = resultobject.datetime.split(/^(\d{4}-\d{2}-\d{2})T/);%>
+
+                    <%= extractedDate %>:
                     <%= resultobject.comments %>
-                    <%= resultobject.happiness_rating %>
-                    <%= resultobject.surprise_rating %>
-                    <%= resultobject.contempt_rating %>
-                    <%= resultobject.sadness_rating %>
-                    <%= resultobject.fear_rating %>
-                    <%= resultobject.disgust_rating %>
-                    <%= resultobject.anger_rating %>
                     <a href="/editsnapshot/<%= resultobject.id %>" title="Edit">
                         <span class="icon">
                             <i class="fa-solid fa-pen-to-square"></i>
@@ -95,6 +91,16 @@
                             <i class="fa-solid fa-trash"></i>
                         </span>
                     </a>
+                    <div>
+                        Happiness: <%= resultobject.happiness_rating %>
+                        Surprise: <%= resultobject.surprise_rating %>
+                        Contempt: <%= resultobject.contempt_rating %>
+                        Sadness: <%= resultobject.sadness_rating %>
+                        Fear: <%= resultobject.fear_rating %>
+                        Disgust: <%= resultobject.disgust_rating %>
+                        Anger: <%= resultobject.anger_rating %>
+                    </div>
+
                 </div>
             <% }); %>
             </div>

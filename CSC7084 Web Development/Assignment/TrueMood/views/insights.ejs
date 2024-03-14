@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js" integrity="sha512-ZwR1/gSZM3ai6vCdI+LVF1zSq/5HznD3ZSTk7kajkaj4D292NLuduDCO1c/NT8Id+jE58KYLKT7hXnbtryGmMg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <%- include('csslinks') %>
+    <script src="https://kit.fontawesome.com/314463b07c.js" crossorigin="anonymous"></script>
     <title>Insights Dashboard</title>
 </head>
 <body>
@@ -41,7 +42,7 @@
                     maintainAspectRatio: true,
                     scales: {y: {min: 1, max: 10}},
                     plugins: {
-                        length: {display: false},
+                        legend: {display: false},
                         tooltips: {enabled: true},
                         title: {
                             display: true,
@@ -59,53 +60,58 @@
             
         </script>
 
-    <a href="/insights/filter?userid=<%= userid %>&emotion=happiness_rating" class="secondary">
+    <a href="/insightsfilter?userid=<%= userid %>&emotion=happiness_rating" class="secondary">
         <button>Happiness</button>
     </a>
-    <a href="/insights/filter?userid=<%= userid %>&emotion=surprise_rating" class="secondary">
+    <a href="/insightsfilter?userid=<%= userid %>&emotion=surprise_rating" class="secondary">
         <button>Surprise</button>
     </a>
-    <a href="/insights/filter?userid=<%= userid %>&emotion=sadness_rating" class="secondary">
+    <a href="/insightsfilter?userid=<%= userid %>&emotion=sadness_rating" class="secondary">
         <button>Sadness</button>
     </a>
-    <a href="/insights/filter?userid=<%= userid %>&emotion=contempt_rating" class="secondary">
+    <a href="/insightsfilter?userid=<%= userid %>&emotion=contempt_rating" class="secondary">
         <button>Contempt</button>
     </a>
-    <a href="/insights/filter?userid=<%= userid %>&emotion=fear_rating" class="secondary">
+    <a href="/insightsfilter?userid=<%= userid %>&emotion=fear_rating" class="secondary">
         <button>Fear</button>
     </a>
-    <a href="/insights/filter?userid=<%= userid %>&emotion=disgust_rating" class="secondary">
+    <a href="/insightsfilter?userid=<%= userid %>&emotion=disgust_rating" class="secondary">
         <button>Disgust</button>
     </a>
-    <a href="/insights/filter?userid=<%= userid %>&emotion=anger_rating" class="secondary">
+    <a href="/insightsfilter?userid=<%= userid %>&emotion=anger_rating" class="secondary">
         <button>Anger</button>
     </a>
+    <h2>All snapshots</h2>
     <div>
-        <% rows.forEach(result => { %>
-            <div class="flex-item">
-                <%= result.id %>
-                <%= result.user_id %>
-                <%= result.datetime %>
-                <%= result.comments %>
-                <%= result.happiness_rating %>
-                <%= result.surprise_rating %>
-                <%= result.contempt_rating %>
-                <%= result.sadness_rating %>
-                <%= result.fear_rating %>
-                <%= result.disgust_rating %>
-                <%= result.anger_rating %>
-                <a href="/editsnapshot/<%= result.id %>" title="Edit">
+        <% rows.forEach((rows) => { %>
+        <div class="snapshot-card">
+
+            <%const [, extractedDate] = rows.datetime.split(/^(\d{4}-\d{2}-\d{2})T/);%>
+
+            <%= extractedDate %>:
+            <%= rows.comments %>
+            <a href="/editsnapshot/<%= rows.id %>" title="Edit">
                 <span class="icon">
                     <i class="fa-solid fa-pen-to-square"></i>
                 </span>
             </a>
-            <a href="/deletesnapshot/<%= result.id %>" title="Delete">
+            <a href="/deletesnapshot/<%= rows.id %>" title="Delete">
                 <span class="icon">
                     <i class="fa-solid fa-trash"></i>
                 </span>
             </a>
+            <div>
+                Happiness: <%= rows.happiness_rating %>
+                Surprise: <%= rows.surprise_rating %>
+                Contempt: <%= rows.contempt_rating %>
+                Sadness: <%= rows.sadness_rating %>
+                Fear: <%= rows.fear_rating %>
+                Disgust: <%= rows.disgust_rating %>
+                Anger: <%= rows.anger_rating %>
+            </div>
+
         </div>
-        <% }); %>
+    <% }); %>
     </div>
 </main>
 </body>

@@ -9,7 +9,7 @@ router.get("/", controller.getLanding);
 router.get("/editsnapshot/:id", isAuth, controller.getEditSnapshot);
 router.get('/deletesnapshot/:id', isAuth, controller.getDeleteSnapshot);
 router.get('/insights', isAuth, controller.getInsights);
-router.get('/insights/filter', isAuth, controller.getFilterSnapshots);
+router.get('/insightsfilter', isAuth, controller.getFilterSnapshots);
 router.get('/login', controller.postLogin);
 router.get('/logout', controller.getLogout)
 router.get('/createsnapshot', isAuth, controller.getCreateSnapshot);
